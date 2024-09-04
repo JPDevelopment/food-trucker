@@ -1,0 +1,24 @@
+<.header>
+  <%= @truck.name %>
+  <:subtitle><%= @truck.type %></:subtitle>
+  <:actions>
+    <.link href={~p"/trucks/#{@truck}/edit"}>
+      <.button>Edit truck</.button>
+    </.link>
+  </:actions>
+</.header>
+
+<.list>
+  <:item title="Location ID"><%= @truck.location_id %></:item>
+  <:item title="CNN"><%= @truck.cnn %></:item>
+  <:item title="Location Description"><%= @truck.location_description %></:item>
+  <:item title="Address"><%= @truck.address %></:item>
+  <:item title="Block Lot"><%= @truck.block_lot %></:item>
+  <:item title="Block"><%= @truck.block %></:item>
+  <:item title="Lot"><%= @truck.lot %></:item>
+  <:item title="Permit"><%= @truck.permit %></:item>
+  <:item title="Status"><%= @truck.status %></:item>
+  <:item title="Food Items"><%= @truck.food_items %></:item>
+</.list>
+
+<.back navigate={~p"/trucks"}>Back to Trucks</.back>

@@ -1,0 +1,32 @@
+<.simple_form :let={f} for={@changeset} action={@action}>
+  <.error :if={@changeset.action}>
+    Oops, something went wrong! Please check the errors below.
+  </.error>
+  <.input field={f[:location_id]} type="number" label="Location ID" />
+  <.input field={f[:name]} type="text" label="Name" />
+  <.input
+    field={f[:type]}
+    type="select"
+    label="Type"
+    prompt="Choose a Type"
+    options={["Truck", "Push Cart"]}
+  />
+  <.input field={f[:cnn]} type="number" label="CNN" />
+  <.input field={f[:location_description]} type="text" label="Location Description" />
+  <.input field={f[:address]} type="text" label="Address" />
+  <.input field={f[:block_lot]} type="text" label="Block Lot" />
+  <.input field={f[:block]} type="text" label="Block" />
+  <.input field={f[:lot]} type="text" label="Lot" />
+  <.input field={f[:permit]} type="text" label="Permit" />
+  <.input
+    field={f[:status]}
+    type="select"
+    label="Status"
+    prompt="Choose a value"
+    options={Ecto.Enum.values(FoodTrucks.Trucks.Truck, :status)}
+  />
+  <.input field={f[:food_items]} type="text" label="Food Items" />
+  <:actions>
+    <.button>Save Truck</.button>
+  </:actions>
+</.simple_form>

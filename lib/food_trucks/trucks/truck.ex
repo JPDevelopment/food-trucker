@@ -9,8 +9,8 @@ defmodule FoodTrucks.Trucks.Truck do
   schema "trucks" do
     field :block, :string
     field :name, :string
-    field :status, Ecto.Enum, values: [:APPROVED, :EXPIRED, :REQUESTED, :DENIED]
-    field :type, :string
+    field :status, Ecto.Enum, values: [:APPROVED, :EXPIRED, :REQUESTED, :ISSUED, :SUSPEND]
+    field :type, :string, default: "Truck"
     field :address, :string
     field :permit, :string
     field :location_id, :integer

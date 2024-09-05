@@ -18,6 +18,7 @@ defmodule FoodTrucksWeb.Router do
     pipe_through :browser
 
     resources "/trucks", TruckController
+    live "/trucks-live", TrucksLive
 
     get "/", PageController, :home
   end

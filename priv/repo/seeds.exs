@@ -1,11 +1,8 @@
-# Script for populating the database. You can run it as:
-#
-#     mix run priv/repo/seeds.exs
-#
-# Inside the script, you can read and write to any of your
-# repositories directly:
-#
-#     FoodTrucks.Repo.insert!(%FoodTrucks.SomeSchema{})
-#
-# We recommend using the bang functions (`insert!`, `update!`
-# and so on) as they will fail if something goes wrong.
+path_to_csv = "priv/repo/mobile_food_facility_permit.csv"
+trucks = FoodTrucks.CsvImport.prepare_csv_for_insert(path_to_csv)
+
+Enum.each(trucks, fn truck ->
+  truck = FoodTrucks.Trucks.change_truck(%FoodTrucks.Trucks.Truck{}, truck)
+
+  FoodTrucks.Repo.insert!(truck)
+end)

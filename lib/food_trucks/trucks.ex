@@ -18,7 +18,11 @@ defmodule FoodTrucks.Trucks do
 
   """
   def list_trucks do
-    Repo.all(Truck)
+    qry =
+      from t in Truck,
+        order_by: t.name
+
+    Repo.all(qry)
   end
 
   @doc """
@@ -100,5 +104,19 @@ defmodule FoodTrucks.Trucks do
   """
   def change_truck(%Truck{} = truck, attrs \\ %{}) do
     Truck.changeset(truck, attrs)
+  end
+
+  @doc """
+  Search for food trucks containing the given search term in their `food_items`.
+  """
+  def filter_trucks_by_item(item) do
+    search_term = "%#{item}%"
+
+    qry =
+      from t in Truck,
+        where: ilike(t.food_items, ^search_term),
+        order_by: t.name
+
+    Repo.all(qry)
   end
 end

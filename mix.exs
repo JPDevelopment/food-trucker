@@ -59,7 +59,9 @@ defmodule FoodTrucks.MixProject do
       {:jason, "~> 1.2"},
       {:dns_cluster, "~> 0.1.1"},
       {:bandit, "~> 1.5"},
-      {:csv, "~> 3.2"}
+      {:csv, "~> 3.2"},
+      {:dart_sass, "~> 0.7", runtime: Mix.env() == :dev},
+      {:bulma, "1.0.2"}
     ]
   end
 
@@ -80,6 +82,7 @@ defmodule FoodTrucks.MixProject do
       "assets.deploy": [
         "tailwind food_trucks --minify",
         "esbuild food_trucks --minify",
+        "sass default --no-source-map --style=compressed",
         "phx.digest"
       ]
     ]

@@ -26,7 +26,13 @@ config :food_trucks, FoodTrucksWeb.Endpoint,
   secret_key_base: "wP8PkqEO986+AgKn+dW1TxQIeOp3TANJajETxpG56PCVZt0GKhJXvyj95ZDI9SI/",
   watchers: [
     esbuild: {Esbuild, :install_and_run, [:food_trucks, ~w(--sourcemap=inline --watch)]},
-    tailwind: {Tailwind, :install_and_run, [:food_trucks, ~w(--watch)]}
+    tailwind: {Tailwind, :install_and_run, [:food_trucks, ~w(--watch)]},
+    esbuild: {Esbuild, :install_and_run, [:default, ~w(--sourcemap=inline --watch)]},
+    sass: {
+      DartSass,
+      :install_and_run,
+      [:default, ~w(--embed-source-map --source-map-urls=absolute --watch)]
+    }
   ]
 
 # ## SSL Support
